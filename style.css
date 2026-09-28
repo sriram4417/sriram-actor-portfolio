@@ -1,0 +1,1413 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    position: relative;
+    background:
+        linear-gradient(rgba(12, 12, 12, 0.46), rgba(12, 12, 12, 0.62)),
+        url("images/fullshot.jpeg") center center / cover no-repeat fixed;
+    color: #f5f2eb;
+    font-family: "DM Sans", sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 236, 203, 0.08);
+    pointer-events: none;
+    z-index: 0;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =========================================
+   VARIABLES
+========================================= */
+
+:root {
+
+    --black: #080809;
+    --dark: #101012;
+    --white: #f5f2eb;
+    --grey: #99999e;
+    --gold: #b99a5b;
+    --border: rgba(255,255,255,0.12);
+
+}
+
+
+/* =========================================
+   PRELOADER
+========================================= */
+
+#preloader {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: var(--black);
+
+    z-index: 9999;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+.loader-name {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 35px;
+
+    letter-spacing: 5px;
+
+}
+
+.loader-line {
+
+    width: 0;
+
+    height: 2px;
+
+    background: var(--gold);
+
+    margin-top: 20px;
+
+    animation: load 1.5s forwards;
+
+}
+
+@keyframes load {
+
+    to {
+        width: 150px;
+    }
+
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 80px;
+
+    padding: 0 5%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    z-index: 1000;
+
+    transition: 0.4s;
+
+}
+
+.navbar.scrolled {
+
+    background: rgba(8,8,9,0.92);
+
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+
+.logo {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 25px;
+
+    font-weight: 700;
+
+}
+
+.logo span {
+
+    color: var(--gold);
+
+}
+
+
+nav {
+
+    display: flex;
+
+    gap: 30px;
+
+}
+
+nav a {
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    color: #bbb;
+
+    transition: 0.3s;
+
+}
+
+nav a:hover {
+
+    color: var(--gold);
+
+}
+
+
+.menu-btn {
+
+    display: none;
+
+    background: none;
+
+    border: none;
+
+    color: white;
+
+    font-size: 25px;
+
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+
+    height: 100vh;
+
+    min-height: 700px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    overflow: hidden;
+
+}
+
+.hero-image {
+
+    position: absolute;
+
+    inset: 0;
+
+}
+
+.hero-image img {
+
+    filter: sepia(0.18) saturate(0.7) brightness(0.9) contrast(1.08);
+    object-position: center;
+
+}
+
+.hero-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,0.9),
+            rgba(0,0,0,0.45),
+            rgba(0,0,0,0.15)
+        );
+
+}
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 90%;
+
+    max-width: 1200px;
+
+    margin: auto;
+
+}
+
+.small-title {
+
+    color: var(--gold);
+
+    letter-spacing: 4px;
+
+    font-size: 11px;
+
+    margin-bottom: 25px;
+
+}
+
+.hero h1 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(55px, 9vw, 130px);
+
+    line-height: 0.8;
+
+    font-weight: 500;
+
+}
+
+.hero h1 span {
+
+    display: block;
+
+    color: transparent;
+
+    -webkit-text-stroke: 1px white;
+
+}
+
+.hero-line {
+
+    width: 80px;
+
+    height: 2px;
+
+    background: var(--gold);
+
+    margin: 35px 0 20px;
+
+}
+
+.hero-description {
+
+    max-width: 420px;
+
+    color: #c3c3c3;
+
+    line-height: 1.8;
+
+    font-size: 14px;
+
+}
+
+.hero-buttons {
+
+    display: flex;
+
+    gap: 15px;
+
+    margin-top: 30px;
+
+}
+
+.btn {
+
+    padding: 15px 25px;
+
+    border: 1px solid var(--gold);
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+
+    transition: 0.3s;
+
+}
+
+.btn.primary {
+
+    background: var(--gold);
+
+    color: #080809;
+
+}
+
+.btn.primary:hover {
+
+    background: white;
+
+}
+
+.btn.secondary:hover {
+
+    background: var(--gold);
+
+    color: black;
+
+}
+
+.scroll-text {
+
+    position: absolute;
+
+    right: 5%;
+
+    bottom: 40px;
+
+    writing-mode: vertical-rl;
+
+    color: #aaa;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+}
+
+
+/* =========================================
+   SECTIONS
+========================================= */
+
+.section {
+
+    padding: 130px 8%;
+    position: relative;
+    z-index: 1;
+    background: rgba(8, 8, 9, 0.46);
+    backdrop-filter: blur(1px);
+
+}
+
+.section-label {
+
+    color: var(--gold);
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 50px;
+
+}
+
+.section-heading {
+
+    margin-bottom: 60px;
+
+}
+
+.section-heading h2,
+.big-heading {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(45px, 7vw, 85px);
+
+    line-height: 0.9;
+
+    font-weight: 500;
+
+}
+
+.section-heading h2 span,
+.big-heading span {
+
+    display: block;
+
+    color: var(--gold);
+
+}
+
+.section-heading p {
+
+    margin-top: 20px;
+
+    color: var(--grey);
+
+}
+
+
+/* =========================================
+   PROFILE
+========================================= */
+
+.profile {
+
+    background: var(--white);
+
+    color: var(--white);
+
+}
+
+.profile-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 100px;
+
+}
+
+.profile-title p {
+
+    font-size: 15px;
+
+    color: var(--gold);
+
+    letter-spacing: 2px;
+
+}
+
+.profile-title h2 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 55px;
+
+    line-height: 1;
+
+    margin-top: 20px;
+
+}
+
+.profile-title h2 span {
+
+    display: block;
+
+    color: var(--gold);
+
+}
+
+.profile-text {
+
+    max-width: 550px;
+
+}
+
+.profile-text p {
+
+    margin-bottom: 25px;
+
+    color: #f6f6f6;
+
+    line-height: 1.9;
+
+}
+
+
+.details-grid {
+
+    margin-top: 100px;
+
+    display: grid;
+
+    grid-template-columns: repeat(3,1fr);
+
+    border-top: 1px solid #ccc;
+
+}
+
+.detail {
+
+    padding: 30px 20px;
+
+    border-bottom: 1px solid #ccc;
+
+}
+
+.detail span {
+
+    display: block;
+
+    font-size: 9px;
+
+    color: var(--gold);
+
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+
+}
+
+.detail strong {
+
+    font-size: 14px;
+
+}
+
+
+/* =========================================
+   PHOTO GRID
+========================================= */
+
+.photo-grid {
+
+    display: grid;
+
+    grid-template-columns: 1.3fr 1fr 1fr;
+
+    grid-template-rows: 280px 280px;
+
+    gap: 15px;
+
+}
+
+.photo-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+.photo-card.large {
+
+    grid-row: span 2;
+
+}
+
+.photo-card img {
+
+    transition: transform 0.8s ease;
+
+}
+
+.photo-card:hover img {
+
+    transform: scale(1.07);
+
+}
+
+.photo-caption {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    padding: 20px;
+
+    background: linear-gradient(transparent,rgba(0,0,0,.8));
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+}
+
+.photo-caption span {
+
+    color: var(--gold);
+
+    margin-right: 10px;
+
+}/* =========================================
+   PERFORMANCE GALLERY
+========================================= */
+
+.performance-gallery {
+
+    background: #09090b;
+
+}
+
+.gallery-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 18px;
+
+}
+
+
+.gallery-item {
+
+    height: 420px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background: #151518;
+
+}
+
+
+.gallery-item.large {
+
+    height: 600px;
+
+    grid-row: span 2;
+
+}
+
+
+.gallery-item img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.8s ease;
+
+}
+
+
+.gallery-item:hover img {
+
+    transform: scale(1.06);
+
+}
+
+
+/* DARK GRADIENT */
+
+.gallery-item::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,0.85),
+            transparent 55%
+        );
+
+}
+
+
+/* CAPTION */
+
+.gallery-caption {
+
+    position: absolute;
+
+    left: 25px;
+
+    bottom: 25px;
+
+    z-index: 2;
+
+}
+
+
+.gallery-caption span {
+
+    color: #b99a5b;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.gallery-caption h3 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 25px;
+
+    font-weight: 500;
+
+    margin-top: 7px;
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:800px) {
+
+    .gallery-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .gallery-item,
+    .gallery-item.large {
+
+        height: 450px;
+
+        grid-row: auto;
+
+    }
+
+}
+@media(max-width:800px) {
+
+    .experience-item {
+
+        grid-template-columns: 45px 1fr;
+
+        gap: 15px;
+
+        padding: 35px 0;
+
+    }
+
+    .experience-content h3 {
+
+        font-size: 32px;
+
+    }
+
+}
+
+/* =========================================
+   SKILLS
+========================================= */
+
+.skills {
+
+    background: #111114;
+
+}
+
+.big-heading {
+
+    margin-bottom: 70px;
+
+}
+
+.skills-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3,1fr);
+
+    gap: 1px;
+
+    background: var(--border);
+
+}
+
+.skill-card {
+
+    background: #111114;
+
+    padding: 45px 35px;
+
+    min-height: 260px;
+
+    transition: 0.4s;
+
+}
+
+.skill-card:hover {
+
+    background: #1b1b1e;
+
+    transform: translateY(-5px);
+
+}
+
+.skill-number {
+
+    color: var(--gold);
+
+    font-size: 11px;
+
+    margin-bottom: 50px;
+
+}
+
+.skill-card h3 {
+
+    font-size: 17px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 15px;
+
+}
+
+.skill-card p {
+
+    color: var(--grey);
+
+    line-height: 1.7;
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================
+   CHARACTERS
+========================================= */
+
+.character-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2,1fr);
+
+    gap: 20px;
+
+}
+
+.character-card {
+
+    height: 550px;
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+.character-card img {
+
+    transition: 0.8s;
+
+}
+
+.character-card:hover img {
+
+    transform: scale(1.06);
+
+}
+
+.character-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    padding: 35px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    background: linear-gradient(
+        transparent,
+        rgba(0,0,0,.9)
+    );
+
+}
+
+.character-overlay span {
+
+    color: var(--gold);
+
+    font-size: 11px;
+
+}
+
+.character-overlay h3 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 45px;
+
+    font-weight: 400;
+
+}
+
+.character-overlay h3 strong {
+
+    display: block;
+
+}
+
+.character-overlay p {
+
+    color: #ccc;
+
+    font-size: 11px;
+
+    margin-top: 8px;
+
+}
+
+
+/* =========================================
+   SHOWREEL
+========================================= */
+
+.showreel {
+
+    background: var(--gold);
+
+    color: var(--black);
+
+}
+
+.showreel .section-label {
+
+    color: #5b4929;
+
+}
+
+.showreel-content {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+.showreel h2 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(50px,8vw,100px);
+
+    line-height: .85;
+
+}
+
+.showreel h2 span {
+
+    display: block;
+
+    color: white;
+
+}
+
+.showreel p {
+
+    margin-top: 25px;
+
+    color: #50462f;
+
+}
+
+.qr-container {
+
+    text-align: center;
+
+}
+.qr-container img {
+    width: 100px;
+
+    height: 100px;
+
+    object-fit: contain;
+
+}
+
+.qr-placeholder {
+
+    width: 60px;
+
+    height: 60px;
+
+    background: white;
+
+    color: black;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+}
+
+.qr-container p {
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+}
+
+
+/* =========================================
+   CONTACT
+========================================= */
+
+.contact {
+
+    background: #050506;
+
+}
+
+.contact-inner {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+}
+
+.contact-title p {
+
+    color: var(--gold);
+
+    letter-spacing: 3px;
+
+    font-size: 10px;
+
+}
+
+.contact-title h2 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(50px,8vw,100px);
+
+    line-height: .9;
+
+    margin: 20px 0 80px;
+
+}
+
+.contact-title h2 span {
+
+    color: var(--gold);
+
+    display: block;
+
+}
+
+.contact-info {
+
+    display: grid;
+
+    grid-template-columns: repeat(2,1fr);
+
+    gap: 35px;
+
+    border-top: 1px solid var(--border);
+
+    padding-top: 40px;
+
+}
+
+.contact-info span {
+
+    display: block;
+
+    color: var(--gold);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+
+}
+
+.contact-info strong {
+
+    font-size: 14px;
+
+    font-weight: 400;
+
+}
+
+.contact-buttons {
+
+    display: flex;
+
+    gap: 15px;
+
+    margin-top: 50px;
+
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+
+    padding: 35px 8%;
+
+    border-top: 1px solid var(--border);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #777;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* =========================================
+   PDF BUTTON
+========================================= */
+
+.pdf-btn {
+
+    position: fixed;
+
+    right: 25px;
+
+    bottom: 25px;
+
+    background: var(--gold);
+
+    color: black;
+
+    border: none;
+
+    padding: 14px 20px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    z-index: 999;
+
+}
+
+
+/* =========================================
+   ANIMATION
+========================================= */
+
+.reveal {
+
+    opacity: 0;
+
+    transform: translateY(40px);
+
+    transition: 1s;
+
+}
+
+.reveal.active {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    nav {
+
+        position: absolute;
+
+        top: 80px;
+
+        left: 0;
+
+        width: 100%;
+
+        background: #080809;
+
+        flex-direction: column;
+
+        padding: 30px;
+
+        display: none;
+
+    }
+
+    nav.active {
+
+        display: flex;
+
+    }
+
+    .menu-btn {
+
+        display: block;
+
+    }
+
+    .hero {
+
+        min-height: 650px;
+
+    }
+
+    .hero h1 {
+
+        font-size: 65px;
+
+    }
+
+    .profile-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+
+    }
+
+    .details-grid {
+
+        grid-template-columns: repeat(2,1fr);
+
+    }
+
+    .photo-grid {
+
+        grid-template-columns: 1fr 1fr;
+
+        grid-template-rows: 300px 300px 300px;
+
+    }
+
+    .photo-card.large {
+
+        grid-row: span 1;
+
+    }
+
+    .skills-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .character-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .character-card {
+
+        height: 500px;
+
+    }
+
+    .showreel-content {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 50px;
+
+    }
+
+    .contact-info {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    footer {
+
+        flex-direction: column;
+
+        gap: 15px;
+
+    }
+
+}
+
+
+/* =========================================
+   PRINT / PDF
+========================================= */
+
+@media print {
+
+    body {
+
+        background: white;
+
+        color: black;
+
+    }
+
+    .navbar,
+    .pdf-btn,
+    .scroll-text {
+
+        display: none !important;
+
+    }
+
+    .section {
+
+        page-break-inside: avoid;
+
+    }
+
+    .hero {
+
+        height: 100vh;
+
+    }
+
+}
